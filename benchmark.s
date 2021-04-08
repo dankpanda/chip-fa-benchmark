@@ -22,7 +22,7 @@
     draw V0, V2, 15
     draw V1, V2, 15 
 
-.drawWord:
+.title:
     mov I, .fontC
     mov V0, 12
     mov V1, 8
@@ -89,12 +89,136 @@
     mov I, .fontK
     draw V0, V1, 5
     add V0,6
+    mov V0, 45
 
+.delayTitle:
+    sdly V0
+    dly V0
+    eq V0, 0
+    jmp .delayTitle
+    clear
+    
+.screenTest:
+    mov V0, 15
+    mov V1, 8
+    mov I, .fontS
+    draw V0, V1, 5
+    add V0, 6
+
+    mov I, .fontC
+    draw V0, V1, 5
+    add V0, 6
+
+    mov I, .fontR
+    draw V0, V1, 5
+    add V0, 6
+
+    mov I, .fontE
+    draw V0, V1, 5
+    add V0, 6
+    draw V0, V1, 5
+    add V0, 6
+
+    mov I, .fontN
+    draw V0, V1, 5
+    add V0, 6
+
+    mov I, .fontT
+    mov V1, 16
+    mov V0, 21
+    draw V0, V1, 5
+    add V0,6
+
+    mov I, .fontE
+    draw V0, V1, 5
+    add V0,6
+
+    mov I, .fontS
+    draw V0, V1, 5
+    add V0,6
+
+    mov I, .fontT
+    draw V0, V1, 5
+    add V0,6
+    mov V0, 45
+
+.delayScreenTest:
+    sdly V0
+    dly V0
+    eq V0, 0
+    jmp .delayScreenTest
+    clear
+    mov V0, 0
+    mov V1, 0
+    mov I, .checkerBoard
+    
+.drawCheckerBoard:
+    neq V0, 64
+    mov V0, 0
+    draw V0, V1, 1
+    add V0, 8
+    neq V0, 64
+    mov I, .checkerBoard2
+    neq V0, 64
+    add V1, 1
+    neq V0, 64
+    jmp .drawCheckerBoard2
+    jmp .drawCheckerBoard
+    
+
+.drawCheckerBoard2:
+    neq V0, 64
+    mov V0, 0
+    draw V0, V1, 1
+    add V0, 8
+    neq V0, 64
+    mov I, .checkerBoard
+    neq V0, 64
+    add V1, 1
+    neq V1, 32
+    jmp .transition
+    neq V0, 64
+    jmp .drawCheckerBoard
+    jmp .drawCheckerBoard2
+
+.transition:
+    mov V0, 0
+    mov V1, 0
+    mov I, .borderHorizontal
+    jmp .reverseScreen
+
+.reverseScreen:
+    draw V0, V1, 1
+    add V0, 8
+    neq V0, 64
+    add V1, 1
+    neq V0, 64
+    mov V0, 0
+    neq V1, 32
+    mov V0, 45
+    neq v1, 32
+    jmp .delayReverseScreen
+    jmp .reverseScreen
+
+.delayReverseScreen:
+    sdly V0
+    dly V0
+    eq V0, 0
+    jmp .delayReverseScreen
+    clear
+   
+    
 .end:
     jmp .end
 
 .borderHorizontal:
 .spr "XXXXXXXX"
+
+.checkerBoard:
+.spr "X X X X "
+
+.checkerBoard2:
+.spr " X X X X"
 
 .borderVertical:
 .spr "X       "
@@ -204,3 +328,100 @@
 .spr "X X     "
 .spr "X  X    "
 
+.fontS:
+.spr "XXXX    "
+.spr "X       "
+.spr "XXXX    "
+.spr "   X    "
+.spr "XXXX    "
+
+.fontT:
+.spr "XXXX    "
+.spr " XX     "
+.spr " XX     "
+.spr " XX     "
+.spr " XX     "
+
+.fontU:
+.spr "X  X    "
+.spr "X  X    "
+.spr "X  X    "
+.spr "X  X    "
+.spr "XXXX    "
+
+.fontO:
+.spr "XXXX    "
+.spr "X  X    "
+.spr "X  X    "
+.spr "X  X    "
+.spr "XXXX    "
+
+.font1:
+.spr " XX     "
+.spr "  X     "
+.spr "  X     "
+.spr "  X     "
+.spr "XXXX    "
+
+.font2:
+.spr "XXXX    "
+.spr "X  X    "
+.spr "  X     "
+.spr "XX      "
+.spr "XXXX    "
+
+.font3:
+.spr "XXX     "
+.spr "   X    "
+.spr "XXX     "
+.spr "   X    "
+.spr "XXX     "
+
+.font4:
+.spr "X  X    "
+.spr "X  X    "
+.spr "XXXX    "
+.spr "   X    "
+.spr "   X    "
+
+.fontQ:
+.spr "XXX     "
+.spr "X X     "
+.spr "X X     "
+.spr "XXX     "
+.spr "   X    "
+
+.fontW:
+.spr "X   X   "
+.spr "X   X   "
+.spr "X   X   "
+.spr "X X X   "
+.spr "XX XX   "
+
+.fontD:
+.spr "XXX     "
+.spr "X  X    "
+.spr "X  X    "
+.spr "X  X    "
+.spr "XXX     "
+
+.fontZ:
+.spr "XXXX    "
+.spr "   X    "
+.spr "  X     "
+.spr " X      "
+.spr "XXXX    "
+
+.fontX:
+.spr "X  X    "
+.spr "X  X    "
+.spr " XX     "
+.spr "X  X    "
+.spr "X  X    "
+
+.fontV:
+.spr "X  X    "
+.spr "X  X    "
+.spr "X  X    "
+.spr "X  X    "
+.spr " XX     "
