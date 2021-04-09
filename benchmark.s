@@ -207,6 +207,234 @@
     jmp .delayReverseScreen
     clear
    
+.buttonTest:
+    mov I, .fontB
+    mov V0, 15
+    mov V1, 8
+    draw V0, V1, 5
+    add V0, 6
+
+    mov I, .fontU
+    draw V0, V1, 5
+    add V0, 6
+
+    mov I, .fontT
+    draw V0, V1, 5
+    add V0, 6
+    draw V0, V1, 5
+    add V0, 6
+
+    mov I, .fontO
+    draw V0, V1, 5
+    add V0, 6
+
+    mov I, .fontN
+    draw V0, V1, 5
+    add V0, 6
+
+    mov V1, 16
+    mov V0, 21
+    mov I, .fontT
+    draw V0, V1, 5
+    add V0, 6 
+
+    mov I, .fontE
+    draw V0, V1, 5
+    add V0, 6 
+
+    mov I, .fontS
+    draw V0, V1, 5
+    add V0, 6 
+
+    mov I, .fontT
+    draw V0, V1, 5
+    add V0, 6 
+    mov V0, 45
+
+.delayButtonTest:
+    sdly V0
+    dly V0
+    eq V0, 0
+    jmp .delayButtonTest
+    clear
+
+.button1:
+    mov I, .font1
+    mov V0, 30
+    mov V1, 14
+    mov V2, 0
+    draw V0, V1, 5
+
+.button1Wait:
+    kneq V2
+    jmp .button2
+    jmp .button1Wait
+
+.button2:
+    clear
+    mov I, .font2
+    mov V2, 1
+    draw V0, V1, 5
+
+.button2Wait:
+    kneq V2
+    jmp .button3
+    jmp .button2Wait
+
+.button3:
+    clear
+    mov I, .font3
+    mov V2, 2
+    draw V0, V1, 5
+
+.button3Wait:
+    kneq V2
+    jmp .button4
+    jmp .button3Wait
+
+.button4:
+    clear
+    mov I, .font4
+    mov V2, 3
+    draw V0, V1, 5
+
+.button4Wait:
+    kneq V2
+    jmp .buttonQ
+    jmp .button4Wait
+
+.buttonQ:
+    clear
+    mov I, .fontQ
+    mov V2, 4
+    draw V0, V1, 5
+
+.buttonQWait:
+    kneq V2
+    jmp .buttonW
+    jmp .buttonQWait
+
+.buttonW:
+    clear
+    mov I, .fontW
+    mov V2, 5
+    draw V0, V1, 5
+
+.buttonWWait:
+    kneq V2
+    jmp .buttonE
+    jmp .buttonWWait
+
+.buttonE:
+    clear
+    mov I, .fontE
+    mov V2, 6
+    draw V0, V1, 5
+
+.buttonEWait:
+    kneq V2
+    jmp .buttonR
+    jmp .buttonEWait
+
+.buttonR:
+    clear
+    mov I, .fontR
+    mov V2, 7
+    draw V0, V1, 5
+
+.buttonRWait:
+    kneq V2
+    jmp .buttonA
+    jmp .buttonRWait
+
+.buttonA:
+    clear
+    mov I, .fontA
+    mov V2, 8
+    draw V0, V1, 5
+
+.buttonAWait:
+    kneq V2
+    jmp .buttonS
+    jmp .buttonAWait
+
+.buttonS:
+    clear
+    mov I, .fontS
+    mov V2, 9
+    draw V0, V1, 5
+
+.buttonSWait:
+    kneq V2
+    jmp .buttonD
+    jmp .buttonSWait
+
+.buttonD:
+    clear
+    mov I, .fontD
+    mov V2, 10
+    draw V0, V1, 5
+
+.buttonDWait:
+    kneq V2
+    jmp .buttonF
+    jmp .buttonDWait
+
+.buttonF:
+    clear
+    mov I, .fontF
+    mov V2, 11
+    draw V0, V1, 5
+
+.buttonFWait:
+    kneq V2
+    jmp .buttonZ
+    jmp .buttonFWait
+
+.buttonZ:
+    clear
+    mov I, .fontZ
+    mov V2, 12
+    draw V0, V1, 5
+
+.buttonZWait:
+    kneq V2
+    jmp .buttonX
+    jmp .buttonZWait
+
+.buttonX:
+    clear
+    mov I, .fontX
+    mov V2, 13
+    draw V0, V1, 5
+
+.buttonXWait:
+    kneq V2
+    jmp .buttonC
+    jmp .buttonXWait
+
+.buttonC:
+    clear
+    mov I, .fontC
+    mov V2, 14
+    draw V0, V1, 5
+
+.buttonCWait:
+    kneq V2
+    jmp .buttonV
+    jmp .buttonCWait
+
+.buttonV:
+    clear
+    mov I, .fontV
+    mov V2, 15
+    draw V0, V1, 5
+
+.buttonVWait:
+    kneq V2
+    jmp .start
+    jmp .buttonVWait
+    
     
 .end:
     jmp .end
