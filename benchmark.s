@@ -432,10 +432,200 @@
 
 .buttonVWait:
     kneq V2
-    jmp .start
+    jmp .audioTest
     jmp .buttonVWait
     
+.audioTest:
+    clear
+    mov V0, 18
+    mov V1, 8
+    mov I, .fontA
+    draw V0,V1,5
+    add V0, 6
+
+    mov I, .fontU
+    draw V0,V1,5
+    add V0, 6
+
+    mov I, .fontD
+    draw V0,V1,5
+    add V0, 6
+
+    mov I, .fontI
+    draw V0,V1,5
+    add V0, 6
+
+    mov I, .fontO
+    draw V0,V1,5
+    add V0, 6
+
+    mov V1, 16
+    mov V0, 21
+    mov I, .fontT
+    draw V0,V1,5
+    add V0, 6
     
+    mov I, .fontE
+    draw V0,V1,5
+    add V0, 6
+
+    mov I, .fontS
+    draw V0,V1,5
+    add V0, 6
+
+    mov I, .fontT
+    draw V0,V1,5
+    add V0, 6
+    mov V0, 45
+
+.delayAudioTest:
+    ssnd V0
+    sdly V0
+    dly V0
+    eq V0, 0
+    jmp .delayAudioTest
+    jmp .done
+
+.done:
+    clear
+    mov V0, 15
+    mov V1, 8
+    mov I, .fontE
+    draw V0, V1, 5
+    add V0,6
+
+    mov I, .fontN
+    draw V0, V1, 5
+    add V0,6
+
+    mov I, .fontD
+    draw V0, V1, 5
+    add V0,12
+
+    mov I, .fontO
+    draw V0, V1, 5
+    add V0,6
+
+    mov I, .fontF
+    draw V0, V1, 5
+    add V0,6
+    
+    mov I, .fontB
+    mov V0, 6
+    mov V1, 16
+    draw V0, V1, 5
+    add V0, 6
+
+    mov I, .fontE
+    draw V0, V1, 5
+    add V0,6
+
+    mov I, .fontN
+    draw V0, V1, 5
+    add V0,6
+
+    mov I, .fontC
+    draw V0, V1, 5
+    add V0,6
+
+    mov I, .fontH
+    draw V0, V1, 5
+    add V0,6
+
+    mov I, .fontM
+    draw V0, V1, 5
+    add V0,6
+
+    mov I, .fontA
+    draw V0, V1, 5
+    add V0,6
+
+    mov I, .fontR
+    draw V0, V1, 5
+    add V0,6
+
+    mov I, .fontK
+    draw V0, V1, 5
+    add V0,6
+    mov V0, 45
+
+.delayDone:
+    sdly V0
+    dly V0
+    eq V0, 0
+    jmp .delayDone
+    jmp .restart
+
+.restart:
+    clear
+    mov V0, 12
+    mov V1, 8
+    mov I, .fontP
+    draw V0, V1, 5
+    add V0, 6
+
+    mov I, .fontR
+    draw V0, V1, 5
+    add V0, 6
+
+    mov I, .fontE
+    draw V0, V1, 5
+    add V0, 6
+
+    mov I, .fontS
+    draw V0, V1, 5
+    add V0, 6
+    draw V0, V1, 5
+    add V0, 12
+
+    mov I, .fontR
+    draw V0, V1, 5
+    add V0, 6
+
+    mov V0, 3
+    mov V1, 16
+    mov I, .fontT
+    draw V0, V1, 5
+    add V0,6
+
+    mov I, .fontO
+    draw V0, V1, 5
+    add V0,12
+
+    mov I, .fontR
+    draw V0, V1, 5
+    add V0,6
+
+    mov I, .fontE
+    draw V0, V1, 5
+    add V0,6
+
+    mov I, .fontS
+    draw V0, V1, 5
+    add V0,6
+
+    mov I, .fontT
+    draw V0, V1, 5
+    add V0,6
+
+    mov I, .fontA
+    draw V0, V1, 5
+    add V0,6
+
+    mov I, .fontR
+    draw V0, V1, 5
+    add V0,6
+
+    mov I, .fontT
+    draw V0, V1, 5
+    add V0,6
+    mov V2, 7
+    
+.restartWait:
+    kneq V2
+    jmp .start
+    jmp .restartWait
+
 .end:
     jmp .end
 
@@ -613,11 +803,11 @@
 .spr "   X    "
 
 .fontQ:
-.spr "XXX     "
-.spr "X X     "
-.spr "X X     "
-.spr "XXX     "
-.spr "   X    "
+.spr "XXXX    "
+.spr "X  X    "
+.spr "X  X    "
+.spr "XXXX    "
+.spr "    X   "
 
 .fontW:
 .spr "X   X   "
